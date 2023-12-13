@@ -8,6 +8,7 @@ import 'package:get/get.dart';
 
 import 'package:bwt_assignment/routes/routes.dart';
 import 'package:bwt_assignment/widgets/mobileInput.dart';
+import 'package:pinput/pinput.dart';
 
 class LoginNumber extends StatefulWidget {
   const LoginNumber({
@@ -76,16 +77,14 @@ class _LoginNumberState extends State<LoginNumber> {
                     const SizedBox(
                       height: 50,
                     ),
-                    TextFormField(
-                      keyboardType: TextInputType.number,
+                    Pinput(
+                      length: 6,
+                      showCursor: true,
                       controller: otpController,
-                      decoration: InputDecoration(
-                        hintText: "Enter the OTP",
-                        hintStyle: TextStyle(color: Colors.grey.shade400),
-                      ),
+                      onCompleted: (pin) => print(pin),
                     ),
                     const SizedBox(
-                      height: 70,
+                      height: 50,
                     ),
                     InkWell(
                       onTap: () async {

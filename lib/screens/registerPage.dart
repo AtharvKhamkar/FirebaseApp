@@ -22,6 +22,14 @@ class RegisterPage extends StatefulWidget {
 
 class _RegisterPageState extends State<RegisterPage> {
   TextEditingController mobileNumber = TextEditingController();
+  TextEditingController countryCode = TextEditingController();
+  @override
+  void initState() {
+    // TODO: implement initState
+    countryCode.text = "+91";
+    super.initState();
+  }
+
   final auth = FirebaseAuth.instance;
   bool loading = false;
   @override
@@ -78,16 +86,50 @@ class _RegisterPageState extends State<RegisterPage> {
                     const SizedBox(
                       height: 50,
                     ),
-                    TextFormField(
-                      keyboardType: TextInputType.number,
-                      controller: mobileNumber,
-                      decoration: InputDecoration(
-                        hintText: "Enter Mobile Number",
-                        hintStyle: TextStyle(color: Colors.grey.shade400),
-                        suffixIcon: Icon(
-                          Icons.call_outlined,
-                          color: Colors.grey.shade400,
-                        ),
+                    Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12),
+                        border: Border.all(color: Colors.grey.shade400),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          SizedBox(
+                            width: 40,
+                            child: TextField(
+                              controller: countryCode,
+                              keyboardType: TextInputType.number,
+                              decoration:
+                                  InputDecoration(border: InputBorder.none),
+                            ),
+                          ),
+                          Text(
+                            "|",
+                            style: TextStyle(color: Colors.grey.shade400),
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Expanded(
+                            child: TextFormField(
+                              keyboardType: TextInputType.number,
+                              controller: mobileNumber,
+                              decoration: InputDecoration(
+                                border: InputBorder.none,
+                                hintText: "Enter Mobile Number",
+                                hintStyle:
+                                    TextStyle(color: Colors.grey.shade400),
+                                suffixIcon: Icon(
+                                  Icons.call_outlined,
+                                  color: Colors.grey.shade400,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                     const SizedBox(
@@ -96,7 +138,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     InkWell(
                       onTap: () async {
                         await FirebaseAuth.instance.verifyPhoneNumber(
-                          phoneNumber: mobileNumber.text,
+                          phoneNumber: countryCode.text + mobileNumber.text,
                           verificationCompleted:
                               (PhoneAuthCredential credential) {},
                           verificationFailed: (FirebaseAuthException e) {},
