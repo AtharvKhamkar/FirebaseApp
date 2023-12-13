@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "929938397319",
+    "project_id": "bwtassignment-a1b28",
+    "storage_bucket": "bwtassignment-a1b28.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:929938397319:android:f33b04a37a17b717654022",
+        "android_client_info": {
+          "package_name": "com.example.bwt_assignment"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjq4wSM-YdmxSc9rX6N3RgmLeEe_sc-cg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
